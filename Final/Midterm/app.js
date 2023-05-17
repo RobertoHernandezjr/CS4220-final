@@ -1,34 +1,45 @@
-/* eslint-disable linebreak-style */
 const api = require('./api.js');
+
 const history = require('./history.js');
 
-const randomActivity = async () => {
-    try {
-        const activity = await api.selectType();
-        const strActivity = JSON.stringify(activity);
-        history.writeHistory();
 
-        console.log(strActivity);
-        return strActivity;
+const chooseHero = async (args) => {
+    try {
+        const hero = await api.chooseHero(args);
+        const writeSuperhero = JSON.stringify(hero);
+        console.log(writeSuperhero);
+
+        //history.writeHistory();
+
+        return writeSuperhero;
     } catch (error) {
         console.log(error);
     }
 };
+//console.log(chooseHero('Batman'));
 
-const randomSelection = async (args) => {
+//random hero id
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+
+const randomSuperhero = async () => {
+    const id = getRandomInt(731) + 1;
     try {
-        const bored = await api.selectRandom(args);
-        const strBored = JSON.stringify(bored);
-        history.writeHistory();
+        const randHero = await api.randomHero(id);
+        const writeHero = JSON.stringify(randHero);
+        console.log(writeHero);
 
-        //console.log(strBored);
-        return strBored;
+        //history.writeHistory();
+
+        return writeHero;
     } catch (error) {
         console.log(error);
     }
 };
 
 module.exports = {
-    randomActivity,
-    randomSelection
+    chooseHero,
+    randomSuperhero
 };

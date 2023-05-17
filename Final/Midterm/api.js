@@ -1,37 +1,39 @@
 const superagent = require('superagent');
-const base = 'https://www.boredapi.com/api/activity';
 
-const selectType = async (todoType) => {
+const superhero = `https://superheroapi.com/api/6113504278737850`;
+
+
+const chooseHero = async (todoName) => {
     try {
-        const typeURL = `${base}/`;
-        const res = await superagent.get(typeURL);
+        //https://superheroapi.com/api.php/6113504278737850/search/name
+        const heroURL = `${superhero}/search/${todoName}`;
+        const res = await superagent.get(heroURL);
 
         console.log(res.body);
-
         return res.body;
-
     } catch (error) {
         console.log(error);
     }
 };
-selectType();
-//https://www.boredapi.com/api/activity/
-//https://www.boredapi.com/api/activity?type=recreational
 
-const selectRandom = async (randomType) => {
+
+//Getting hero by random id
+const randomHero = async (randomHero) => {
     try {
-        const ranURL = `${base}?type=${randomType}`;
-        const res = await superagent.get(ranURL);
-        //console.log(res.body);
-        return res.body;
+        //https://superheroapi.com/api/6113504278737850/id
+        const randomURL = `${superhero}/${randomHero}`;
+        const res = await superagent.get(randomURL);
 
+        console.log(res.body)
+        return res.body;
     } catch (error) {
         console.log(error);
     }
 };
-//selectRandom('recreational');
+
 
 module.exports = {
-    selectType,
-    selectRandom
+    chooseHero,
+    randomHero
 };
+

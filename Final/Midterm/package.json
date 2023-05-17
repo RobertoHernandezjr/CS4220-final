@@ -1,12 +1,12 @@
 {
-  "name": "bored-api",
+  "name": "midterm",
   "version": "1.0.0",
-  "description": "a cli  to interact with an api that helps you find things to do when you're bored",
+  "description": "Superhero information",
   "main": "cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Thaddeus Owens, Gabriela Alvarado",
+  "author": "Kalvin Mateo,  , ",
   "license": "ISC",
   "dependencies": {
     "superagent": "^8.0.9",
